@@ -19,4 +19,9 @@ describe OmniAuth::Strategies::Bitly do
       strategy.stub(:request) { @request }
     end
   end
+  context "client options" do
+    it 'has correct bitly name' do
+      subject.options.name.should eq('bitly')
+    end
+  end
 end
