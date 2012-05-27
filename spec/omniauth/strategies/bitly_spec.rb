@@ -10,7 +10,7 @@ describe OmniAuth::Strategies::Bitly do
 
     @client_id = '123'
     @client_secret = '53cr3tz'
-    @options = {:client_options => {:site => 'https://bitly.com/oauth/authorize'}}
+    @options = {:client_options => {:site => 'https://bitly.com',:authorize_url=>'/oauth/authorize'}}
   end
 
   subject do
@@ -20,8 +20,17 @@ describe OmniAuth::Strategies::Bitly do
     end
   end
   context "client options" do
+
     it 'has correct bitly name' do
       subject.options.name.should eq('bitly')
+    end
+
+    it 'has correct site name' do
+      subject.options.client_options.site.should eq('https://bitly.com')
+    end
+    
+    it 'has correct authorize url' do
+      subject.options.client_options[:authorize_url].should eq('/oauth/authorize')
     end
   end
 end
