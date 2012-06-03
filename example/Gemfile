@@ -4,4 +4,4 @@ gem 'sinatra'
 gem 'multi_json'
 gem 'omniauth-bitly', :path => '../'
 gem 'rack'
-
+gem 'omniauth-linkedin'

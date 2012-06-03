@@ -27,7 +27,7 @@ module OmniAuth
         {:raw_info => raw_info}
       end
       def raw_info
-          @raw_info ||= access_token.get("https://api-ssl.bitly.com/v3/user/").parsed['response']
+          @raw_info ||= access_token.get("/user/").parsed['response']
       end
     end
   end
