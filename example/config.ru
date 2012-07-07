@@ -2,8 +2,8 @@ require 'bundler/setup'
 require 'sinatra/base'
 require 'omniauth-bitly'
 
-ENV['CLIENT_ID']='afb00d85f27d32eed550e83b3ef26ad0f214f21c'
-ENV['CLIENT_SECRET']='1f54c109c8c58253cc3abdf4babf2323d1309c34'
+ENV['CLIENT_ID']='3c415868ca3dc01da2d5b15549ef45a70cbb7924'
+ENV['CLIENT_SECRET']='1ac5997f6070bd4480dbbf60f4523d36ddf1c650'
 ENV['REDIRECT_URI']=''
 class App < Sinatra::Base
   get '/' do
@@ -15,15 +15,20 @@ class App < Sinatra::Base
   end
 
   get '/auth/:provider/callback' do
-    content_type 'text/plain'
-    request.env['omniauth.auth'].to_hash.inspect rescue "No Data"
+    #content_type 'text/plain'
+    #request.env['omniauth.auth'].to_hash.inspect rescue "No Data"
+    puts "HHHH"
   end
 
   get '/auth/failure' do
     content_type 'text/plain'
     request.env['omniauth.auth'].to_hash.inspect rescue "No Data"
   end
+
+  
 end
+
+
 
 run App.new
 use Rack::Session::Cookie

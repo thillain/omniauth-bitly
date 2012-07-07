@@ -9,6 +9,9 @@ module OmniAuth
                               :authorize_url => '/oauth/authorize',
                               :token_url => 'https://api-ssl.bit.ly/oauth/access_token'}
       uid{ raw_info['id'] }
+      def request_phase
+        super
+      end
 
       info do
         prune!({
@@ -26,8 +29,9 @@ module OmniAuth
       extra do
         {:raw_info => raw_info}
       end
+      
       def raw_info
-          @raw_info ||= access_token.get("/user/").parsed['response']
+          @raw_info ||= access_token.get("http://api.bitly.com/").parsed['response']
       end
     end
   end
